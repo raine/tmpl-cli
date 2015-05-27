@@ -13,7 +13,7 @@
   },
   "scripts": {
     "test": "make test",
-    "make-readme": "cat bin/usage.txt | R --slurp -i raw 'join \"\\n\"' '-> usage: it' | ./bin/tmpl README.tmpl.md > README.md"
+    "readme": "cat bin/usage.txt | R --slurp -i raw 'join \"\\n\"' '-> usage: it' | ./bin/tmpl README.tmpl.md > README.md"
   },
   "author": "Raine Virta <raine.virta@gmail.com>",
   "license": "ISC",
