@@ -7,14 +7,17 @@ Assuming a template `README.tmpl.md`:
 ```markdown
 # Hello world
 
-My name is {{name}}!
+My username is {{name}}
 ```
 
 ```sh
 $ echo '{ "name": "raine" }' | tmpl README.tmpl.md
+```
+
+```markdown
 # Hello world
 
-My name is raine!
+My username is raine!
 ```
 
 ## install
