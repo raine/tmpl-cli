@@ -19,7 +19,10 @@ compile-template-file = read-file >> (compile-template _, TEMPLATE_OPTS)
 try render = compile-template-file tmpl-path
 catch {message} then die message
 
+render-stream = through2-map.obj ->
+    try render it catch {message} then die "Error while rendering: #message"
+
 process.stdin
     .pipe JSONStream.parse!
-    .pipe through2-map.obj render
+    .pipe render-stream
     .pipe process.stdout
