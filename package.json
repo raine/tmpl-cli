@@ -1,0 +1,29 @@
+{
+  "name": "tmpl-cli",
+  "version": "0.0.1",
+  "description": "TODO",
+  "repository": "raine/tmpl-cli",
+  "keywords": [
+    "template",
+    "json",
+    "cli"
+  ],
+  "bin": {
+    "tmpl": "./bin/tmpl"
+  },
+  "scripts": {
+    "test": "make test"
+  },
+  "author": "Raine Virta <raine.virta@gmail.com>",
+  "license": "ISC",
+  "devDependencies": {
+    "livescript": "^1.4.0",
+    "mocha": "^2.2.5"
+  },
+  "dependencies": {
+    "JSONStream": "^1.0.4",
+    "lodash.template": "^3.6.1",
+    "minimist": "^1.1.1",
+    "through2-map": "^1.4.0"
+  }
+}

@@ -1,0 +1,4 @@
+Usage: tmpl <template-path>
+
+Example:
+  cat data.json | tmpl README.tmpl.md > README.md
