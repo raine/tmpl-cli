@@ -2,6 +2,9 @@
 
 > Simple, pipeable template rendering on the command-line
 
+Consumes a JSON object from stdin and makes its properties available in a
+template. Prints rendered template to stdout.
+
 Assuming a template `README.tmpl.md`:
 
 ```markdown
