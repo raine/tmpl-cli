@@ -29,7 +29,7 @@ npm install -g tmpl-cli
 ## usage
 
 ```
-Usage: tmpl <template-path>
+Usage: tmpl <path-to-template>
 
 Example:
   cat data.json | tmpl README.tmpl.md > README.md
