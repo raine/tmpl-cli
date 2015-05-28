@@ -1,7 +1,7 @@
 {
   "name": "tmpl-cli",
   "version": "0.1.2",
-  "description": "TODO",
+  "description": "Simple, pipeable template rendering on the command-line",
   "repository": "raine/tmpl-cli",
   "keywords": [
     "template",
