@@ -10,19 +10,23 @@ Prints rendered template to stdout.
 Assuming a template `README.tmpl.md`:
 
 ```markdown
-# Hello world
+# {\\{name}\\}
 
-My username is {\\{name}\\}
+> {\\{description}\\}
+
+Version: {\\{version}\\}
 ```
 
 ```sh
-$ echo '{ "name": "raine" }' | tmpl README.tmpl.md
+$ cat package.json | tmpl README.tmpl.md
 ```
 
 ```markdown
-# Hello world
+# tmpl-cli
 
-My username is raine!
+> Simple, pipeable template rendering on the command-line
+
+Version: 0.1.2
 ```
 
 ## install
@@ -37,9 +41,13 @@ npm install -g tmpl-cli
 {{usage}}
 ```
 
-## more
+## example
 
-Use [`ramda-cli`](https://github.com/raine/ramda-cli) to process data for a template:
+Let's say you have a list of your module's dependencies in
+[`deps.json`][deps.json] and want to create a markdown table out of it and
+include it in markdown file `deps.md`.
+
+Here's your template, `deps.tmpl.md`:
 
 ```markdown
 #### My project's dependencies
@@ -47,22 +55,27 @@ Use [`ramda-cli`](https://github.com/raine/ramda-cli) to process data for a temp
 {\\{deps}\\}
 ```
 
+We use [`markdown-table-cli`][markdown-table-cli] to format it into a table,
+and [`ramda-cli`][ramda-cli] to wrap the table in JSON:
+
 ```sh
-npm ls --json --depth 0 --prod | R \
-  '.dependencies' 'map-obj (.version)' to-pairs 'map zip-obj [\package, \version]' \
-  'map evolve package: -> "[`#it`](https://www.npmjs.com/package/#it)"' \
+cat deps.json \
   | md-table \
-  | R -i raw --slurp 'join \\n' '-> deps: it' \
-  | tmpl doc.tmpl.md
+  | R -i raw --slurp unlines 'create-map-entry \deps' \
+  | tmpl deps.tmpl.md
 ```
 
 ### output
 
 #### My project's dependencies
 
-| package                                                            | version |
-| ------------------------------------------------------------------ | ------- |
-| [`JSONStream`](https://www.npmjs.com/package/JSONStream)           | 1.0.4   |
-| [`lodash.template`](https://www.npmjs.com/package/lodash.template) | 3.6.1   |
-| [`minimist`](https://www.npmjs.com/package/minimist)               | 1.1.1   |
-| [`through2-map`](https://www.npmjs.com/package/through2-map)       | 1.4.0   |
+| package         | version |
+| --------------- | ------- |
+| JSONStream      | 1.0.4   |
+| lodash.template | 3.6.1   |
+| minimist        | 1.1.1   |
+| through2-map    | 1.4.0   |
+
+[markdown-table-cli]: https://github.com/raine/markdown-table-cli
+[deps.json]: https://gist.github.com/2205112af80b094bdc00
+[ramda-cli]: https://github.com/raine/ramda-cli
