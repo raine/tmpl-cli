@@ -5,7 +5,9 @@
 Consumes a JSON object from stdin and makes its properties available in a
 template.
 
-Prints rendered template to stdout.
+Prints the rendered template to stdout.
+
+Template can be of any type, although the README demonstrates use with Markdown files.
 
 Assuming a template `README.tmpl.md`:
 
