@@ -52,16 +52,16 @@ Here's your template, `deps.tmpl.md`:
 ```markdown
 #### My project's dependencies
 
-{\\{deps}\\}
+{\\{table}\\}
 ```
 
-We use [`markdown-table-cli`][markdown-table-cli] to format it into a table,
-and [`ramda-cli`][ramda-cli] to wrap the table in JSON:
+We use [`markdown-table-cli`][markdown-table-cli] to format `deps.json` into
+a table, and [`ramda-cli`][ramda-cli] to wrap the table in JSON:
 
 ```sh
 cat deps.json \
   | md-table \
-  | R -i raw --slurp unlines 'create-map-entry \deps' \
+  | R -i raw --slurp unlines '-> table: it' \
   | tmpl deps.tmpl.md
 ```
 
